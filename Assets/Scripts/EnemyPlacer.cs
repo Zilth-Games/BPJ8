@@ -21,13 +21,14 @@ public class EnemyPlacer : MonoBehaviour
             cursor.transform.position = cellWorldPos;
             if (placementTilemap.HasTile(cell))
             {
-                cursor.A(selectedEnemyPrefab.sprite);
+                cursor.Placable(selectedEnemyPrefab.sprite);
                 if (Input.GetMouseButtonDown(0))
                 {
                     Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity);
                     currentEnemyButton.enemySourceCount--;
                     currentEnemyButton.UpdateText();
                     placementTilemap.SetTile(cell, null);
+                    cursor.transform.position = new Vector3(10, 10, 0);
 
                     if (currentEnemyButton.enemySourceCount == 0)
                     {
@@ -41,12 +42,12 @@ public class EnemyPlacer : MonoBehaviour
             }
             else
             {
-                cursor.B();
+                cursor.IsntPlacable();
 
             }
             if (Input.GetMouseButtonDown(1))
             {
-                cursor.C();
+                cursor.CursorNull();
                 selectedEnemyPrefab = null;
             }
         }

@@ -7,16 +7,15 @@ public class Cursor : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
 
-    public void A(Sprite sprite)
+    public void Placable(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
     }
-    public void B()
+    public void IsntPlacable()
     {
         spriteRenderer.sprite = b;
-
     }
-    public void C()
+    public void CursorNull()
     {
         spriteRenderer.sprite = null;
     }
