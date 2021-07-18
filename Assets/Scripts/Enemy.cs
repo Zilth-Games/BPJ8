@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 public class Enemy : Character
 {
+    public Sprite sprite;
+    public int count;
+
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().sprite = sprite;
+    }
     public override void Move()
     {
         base.Move();
@@ -11,6 +18,5 @@ public class Enemy : Character
         {
             Debug.Log("Attack");
         }
-
     }
 }
