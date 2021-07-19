@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1564688358316481467, guid: d2701c7fdfefc824fac159ad54dddc20,
+  m_Sprite: {fileID: 1235773518496698137, guid: 5311a88567bfce5409be30dfdfdb3c66,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1564688358316481467, guid: d2701c7fdfefc824fac159ad54dddc20,
+  m_Sprite: {fileID: 1235773518496698137, guid: 5311a88567bfce5409be30dfdfdb3c66,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1564688358316481467, guid: d2701c7fdfefc824fac159ad54dddc20,
+  m_Sprite: {fileID: 1235773518496698137, guid: 5311a88567bfce5409be30dfdfdb3c66,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2514,7 +2514,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
