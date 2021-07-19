@@ -32,6 +32,13 @@ public class Hero : Character
         {
             return;
         }
+
+        if (GameManager.Instance.heroTargetCell == currentCell)
+        {
+            Debug.Log("Win");
+            GameManager.Instance.isLevelFinished = true;
+            //GameManager.Instance.LoadNextLevel();
+        }
     }
 
     private void CreateHearts()

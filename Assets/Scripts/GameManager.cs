@@ -6,16 +6,20 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    
+    [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
     [SerializeField] private Button playButton;
+    [Header("Fast Button Sprites")]
     [SerializeField] private Sprite fastButtonSprite1;
     [SerializeField] private Sprite fastButtonSprite2;
+    [Header("Tilemaps")]
 
     [SerializeField] private Tilemap walkableTilemap;
     [SerializeField] private Tilemap trapTilemap;
     [SerializeField] private Tilemap roadTilemap;
+
+    [Header("Tiles")]
 
     [SerializeField] private TileBase roadTile;
     [SerializeField] private TileBase walkableTile;
@@ -68,11 +72,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         if (isLevelFinished) return;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isGameStarted = !isGameStarted;
-            timer = 0;
-        }
+
         if (isGameStarted)
         {
             if (timer > 0)
@@ -157,19 +157,23 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale += 1.5f;
         if(Time.timeScale==4f)
         {
-            fastButton.GetComponent<Image>().sprite = fastButtonSprite1;
+            fastButton.image.sprite = fastButtonSprite1;
             Time.timeScale = 1f;
         }
         if (Time.timeScale == 2.5f)
         {
-            fastButton.GetComponent<Image>().sprite = fastButtonSprite2;
+            fastButton.image.sprite = fastButtonSprite2;
         }
+    }
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void PlayButton()
     {
         isGameStarted = true;
-        
-        playButton.GetComponent<Image>().enabled = false;
+        timer = 0;
+        playButton.image.enabled = false;
         for (int i = 0; i < enemyUIButtons.Count; i++)
         {
             enemyUIButtons[i].Button.interactable = false;
