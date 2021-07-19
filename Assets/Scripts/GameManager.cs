@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button fastButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private Sprite fastButtonSprite1;
+    [SerializeField] private Sprite fastButtonSprite2;
+
     [SerializeField] private Tilemap walkableTilemap;
     [SerializeField] private Tilemap trapTilemap;
     [SerializeField] private Tilemap roadTilemap;
@@ -13,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private List<Enemy> enemyPrefabs;
     [SerializeField] private EnemyUIButton enemyUIButtonPrefab;
+    private List<EnemyUIButton> enemyUIButtons = new List<EnemyUIButton>();
     [SerializeField] private Transform enemyUIButtonParent;
 
     [SerializeField] private float stepInterval = 0.5f;
@@ -134,7 +144,35 @@ public class GameManager : Singleton<GameManager>
         {
            var enemyButton= Instantiate(enemyUIButtonPrefab,enemyUIButtonParent);
            enemyButton.SetProps(enemyPrefabs[i].sprite,enemyPrefabs[i].count,enemyPrefabs[i]);
+            enemyUIButtons.Add(enemyButton);
         }
     }
 
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void FastButton()
+    {
+        Time.timeScale += 1.5f;
+        if(Time.timeScale==4f)
+        {
+            fastButton.GetComponent<Image>().sprite = fastButtonSprite1;
+            Time.timeScale = 1f;
+        }
+        if (Time.timeScale == 2.5f)
+        {
+            fastButton.GetComponent<Image>().sprite = fastButtonSprite2;
+        }
+    }
+    public void PlayButton()
+    {
+        isGameStarted = true;
+        
+        playButton.GetComponent<Image>().enabled = false;
+        for (int i = 0; i < enemyUIButtons.Count; i++)
+        {
+            enemyUIButtons[i].Button.interactable = false;
+        }
+    }
 }
