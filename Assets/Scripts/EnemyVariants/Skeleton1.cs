@@ -9,6 +9,8 @@ public class Skeleton1 : Enemy
         Vector3Int leftCell = new Vector3Int(currentCell.x - 1, currentCell.y, 0);
         Vector3Int rightCell = new Vector3Int(currentCell.x + 1, currentCell.y, 0);
 
+
+
         if (right)
         {
             if (GameManager.Instance.WalkableTilemap.HasTile(rightCell))
@@ -43,7 +45,9 @@ public class Skeleton1 : Enemy
             }
         }
 
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
         SetWorldPosition(targetCell);
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
 
     }
 }

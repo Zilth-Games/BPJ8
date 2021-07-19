@@ -4,6 +4,8 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     protected Vector2Int currentCell;
+
+    public int health;
     protected virtual void Awake()
     {
         currentCell = GameManager.Instance.WorldPointToCell(transform.position);

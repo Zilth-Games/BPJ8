@@ -73,11 +73,11 @@ public class GameManager : Singleton<GameManager>
             {
                 timer = stepInterval;
                 hero.Move();
+
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     enemies[i].Move();
                 }
-                
 
             }
         }

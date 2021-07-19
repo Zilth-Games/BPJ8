@@ -36,6 +36,9 @@ public class Fireball : Enemy
         }
 
         if (i == 4) i = 0;
+
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
         SetWorldPosition(targetCell);
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
     }
 }
