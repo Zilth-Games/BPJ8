@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4580477372755307862}
   - component: {fileID: 4580477372755307856}
   - component: {fileID: 4580477372755307857}
-  - component: {fileID: 4580477372755307859}
+  - component: {fileID: 5174081577600495621}
+  - component: {fileID: 448198815483693182}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -102,7 +103,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4580477372755307859
+--- !u!114 &5174081577600495621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,9 +112,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4580477372755307863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80ffec67e2021b40b2d04a7c8b47082, type: 3}
+  m_Script: {fileID: 11500000, guid: 64076364ed44d914185e481ffce0b017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCell: {x: 0, y: 0}
-  sprite: {fileID: 5513427428837754980, guid: 457097598a9513f4fbf8dd34a5fa2307, type: 3}
-  count: 3
+--- !u!114 &448198815483693182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580477372755307863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53e107df1868db4daaff47b70995b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: c216d4a8bf8a2954689aa832b77d6e01, type: 3}
+  count: 1
