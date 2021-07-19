@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2232987096024731957}
   - component: {fileID: 2232987096024731955}
   - component: {fileID: 2232987096024731954}
-  - component: {fileID: 2232987096024731952}
+  - component: {fileID: 4360863780168035428}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2232987096024731952
+--- !u!114 &4360863780168035428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2232987096024731956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80ffec67e2021b40b2d04a7c8b47082, type: 3}
+  m_Script: {fileID: 11500000, guid: f34932ab51bbd824bb38f82c912d6188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCell: {x: 0, y: 0}
-  sprite: {fileID: -5414552479336051574, guid: 457097598a9513f4fbf8dd34a5fa2307, type: 3}
-  count: 2
+  sprite: {fileID: 21300000, guid: 6ca0d0a222396e947bda9efdfcb2a0c3, type: 3}
+  count: 1
+  currentCell: {x: 0, y: 0}
