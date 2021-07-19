@@ -43,7 +43,7 @@ public class Skeleton1 : Enemy
             }
         }
 
-        SetPosition(targetCell);
+        SetWorldPosition(targetCell);
 
     }
 }

@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
             return WorldPointToCell(hero.transform.position);
         }
     }
+    public Vector2Int heroTargetCell;
 
     public TileBase WalkableTile { get => walkableTile;  }
     public Tilemap RoadTilemap { get => roadTilemap;  }
@@ -71,7 +72,7 @@ public class GameManager : Singleton<GameManager>
             else
             {
                 timer = stepInterval;
-                //hero.Move();
+                hero.Move();
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     enemies[i].Move();

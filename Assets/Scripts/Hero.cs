@@ -1,8 +1,31 @@
 ﻿
 using UnityEngine;
 
+[RequireComponent(typeof(Pathfinder))]
 public class Hero : Character
 {
+    private Pathfinder pathfinder;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        pathfinder = GetComponent<Pathfinder>();
+        pathfinder.TargetCell = GameManager.Instance.heroTargetCell;
+        SetWorldPosition(new Vector3Int(currentCell.x, currentCell.y, 0));
+
+    }
+    public override void Move()
+    {
+        Vector3Int targetCell = Vector3Int.zero;
+        if (pathfinder.FindPath(currentCell, out targetCell))
+        {
+            SetWorldPosition(targetCell);
+        }
+        else
+        {
+            return;
+        }
+    }
     //public override void Move()
     //{
     //    FindPath();
