@@ -6,12 +6,12 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private Tilemap walkableTilemap;
     [SerializeField] private Tilemap trapTilemap;
-
     [SerializeField] private Tilemap roadTilemap;
+
     [SerializeField] private TileBase roadTile;
+    [SerializeField] private TileBase walkableTile;
 
 
-    [SerializeField] private Vector2Int heroTarget;
     [SerializeField] private float stepInterval = 0.5f;
     private float timer ;
 
@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     public Camera MainCamera { get; private set; }
     public Tilemap WalkableTilemap { get => walkableTilemap; set => walkableTilemap = value; }
 
-    public Vector2Int HeroCellPosition
+    public Vector2Int HeroCell
     {
         get
         {
@@ -34,13 +34,15 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public TileBase WalkableTile { get => walkableTile;  }
+    public Tilemap RoadTilemap { get => roadTilemap;  }
+
     private void Awake()
     {
         walkableTilemap.CompressBounds();
         roadTilemap.CompressBounds();
         Bounds = walkableTilemap.cellBounds;
         MainCamera = Camera.main;
-
         timer = stepInterval;
         hero = FindObjectOfType<Hero>();
         enemies = FindObjectsOfType<Enemy>();
@@ -68,6 +70,8 @@ public class GameManager : Singleton<GameManager>
                 {
                     enemies[i].Move();
                 }
+                
+
             }
         }
 
@@ -110,6 +114,7 @@ public class GameManager : Singleton<GameManager>
     {
         return walkableTilemap.GetCellCenterWorld(cell);
     }
+
 
     public void SetTileToRoadMap(int x, int y)
     {
