@@ -2,10 +2,19 @@
 public class Enemy : Character
 {
 
+
     protected override void Start()
     {
         base.Start();
         targetCell = GameManager.Instance.HeroCell;
+    }
+
+    public Sprite sprite;
+    public int count;
+
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
     public override void Move()
     {

@@ -11,6 +11,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TileBase roadTile;
     [SerializeField] private TileBase walkableTile;
 
+    [SerializeField] private List<Enemy> enemyPrefabs;
+    [SerializeField] private EnemyUIButton enemyUIButtonPrefab;
+    [SerializeField] private Transform enemyUIButtonParent;
 
     [SerializeField] private float stepInterval = 0.5f;
     private float timer ;
@@ -39,6 +42,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        CreateEnemyUIButtons();
+
         walkableTilemap.CompressBounds();
         roadTilemap.CompressBounds();
         Bounds = walkableTilemap.cellBounds;
@@ -119,6 +124,15 @@ public class GameManager : Singleton<GameManager>
     public void SetTileToRoadMap(int x, int y)
     {
         roadTilemap.SetTile(new Vector3Int(x, y, 0), roadTile);
+    }
+
+    public void CreateEnemyUIButtons()
+    {
+        for (int i = 0; i < enemyPrefabs.Count; i++)
+        {
+           var enemyButton= Instantiate(enemyUIButtonPrefab,enemyUIButtonParent);
+           enemyButton.SetProps(enemyPrefabs[i].sprite,enemyPrefabs[i].count,enemyPrefabs[i]);
+        }
     }
 
 }
