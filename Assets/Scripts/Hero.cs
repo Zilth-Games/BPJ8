@@ -56,6 +56,7 @@ public class Hero : Character
         if (health == 0)
         {
             Debug.Log("Dead");
+            GameManager.Instance.isLevelFinished = true;
         }
     }
 
