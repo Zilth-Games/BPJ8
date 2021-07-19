@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     private float timer ;
 
     private Hero hero;
-    private Enemy[] enemies;
+    private List<Enemy> enemies;
 
     public bool isLevelFinished;
 
@@ -39,10 +39,12 @@ public class GameManager : Singleton<GameManager>
 
     public TileBase WalkableTile { get => walkableTile;  }
     public Tilemap RoadTilemap { get => roadTilemap;  }
+    public List<Enemy> Enemies { get => enemies;  }
 
     private void Awake()
     {
         CreateEnemyUIButtons();
+        enemies = new List<Enemy>();
 
         walkableTilemap.CompressBounds();
         roadTilemap.CompressBounds();
@@ -50,7 +52,6 @@ public class GameManager : Singleton<GameManager>
         MainCamera = Camera.main;
         timer = stepInterval;
         hero = FindObjectOfType<Hero>();
-        enemies = FindObjectsOfType<Enemy>();
     }
 
     private void Update()
@@ -70,8 +71,8 @@ public class GameManager : Singleton<GameManager>
             else
             {
                 timer = stepInterval;
-                hero.Move();
-                for (int i = 0; i < enemies.Length; i++)
+                //hero.Move();
+                for (int i = 0; i < enemies.Count; i++)
                 {
                     enemies[i].Move();
                 }
