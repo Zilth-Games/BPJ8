@@ -31,7 +31,7 @@ public class Fireball : Enemy
                 break;
         }
         i++;
-        if (i == 3) i = 0;
+        if (i == 4) i = 0;
         SetPosition(targetCell);
     }
 }
