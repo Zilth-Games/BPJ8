@@ -6,13 +6,17 @@ public class HealthPotion : MonoBehaviour, IInteractable
 {
     public void Interact(Character character)
     {
-        //character.health++;
+        var hero = (Hero)character;
         Debug.Log(character.name);
+        hero.IncreaseHealth();
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Interact(collision.gameObject.GetComponent<Character>());
+        if ((1 << collision.gameObject.layer & LayerMask.GetMask("Hero")) != 0)
+        {
+            Interact(collision.gameObject.GetComponent<Character>());
+        }
     }
 }
