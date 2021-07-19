@@ -28,7 +28,8 @@ public class EnemyPlacer : MonoBehaviour
                 cursor.Placable(selectedEnemyPrefab.sprite);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity, enemyParent);
+                    var enemy = Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity, enemyParent);
+                    GameManager.Instance.Enemies.Add(enemy);
                     currentEnemyButton.enemySourceCount--;
                     currentEnemyButton.UpdateText();
                     placementTilemap.SetTile(cell, null);

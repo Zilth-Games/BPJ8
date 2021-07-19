@@ -14,24 +14,31 @@ public class Fireball : Enemy
         switch (i)
         {
             case 0://Left
-                if (GameManager.Instance.WalkableTilemap.HasTile(leftCell)) return;
+                i++;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(leftCell)) { Move(); return; }
                 targetCell = leftCell;
                 break;
             case 1://up
-                if (GameManager.Instance.WalkableTilemap.HasTile(upCell)) return;
+                i++;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(upCell)) { Move(); return; }
                 targetCell = upCell;
                 break;
             case 2://right
-                if (GameManager.Instance.WalkableTilemap.HasTile(rightCell)) return;
+                i++;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(rightCell)) { Move(); return; }
                 targetCell = rightCell;
                 break;
             case 3://down
-                if (GameManager.Instance.WalkableTilemap.HasTile(downCell)) return;
+                i++;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(downCell)) { Move(); return; }
                 targetCell = downCell;
                 break;
         }
-        i++;
+
         if (i == 4) i = 0;
-        SetPosition(targetCell);
+
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
+        SetWorldPosition(targetCell);
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
     }
 }

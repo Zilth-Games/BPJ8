@@ -1,23 +1,33 @@
 ﻿using UnityEngine;
-public abstract class Enemy : Character
+public abstract class Enemy : Character , IInteractable
 {
     public Sprite sprite;
     public int count;
 
-    public Vector2Int currentCell;
-
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         GetComponent<SpriteRenderer>().sprite = sprite;
-        currentCell = GameManager.Instance.WorldPointToCell(transform.position);
     }
 
-    protected void SetPosition(Vector3Int targetCell)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.position = GameManager.Instance.GetCellCenterWorld(targetCell);
-        currentCell = (Vector2Int)targetCell;
+        if ((1 << collision.gameObject.layer & LayerMask.GetMask("Hero")) != 0)
+        {
+            Interact(collision.gameObject.GetComponent<Character>());
+        }
+    }
+    public void Interact(Character character)
+    {
+        var hero = (Hero)character;
+        hero.TakeDamage();
+        GameManager.Instance.Enemies.Remove(this);
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
+        Destroy(gameObject);
+
     }
 
-    public abstract void Move();
-   
+
+
+
 }

@@ -6,7 +6,16 @@ public class Peaks : MonoBehaviour, IInteractable
 {
     public void Interact(Character character)
     {
-        //character.health--;
+        if (character is Hero)
+        {
+            var hero = (Hero)character;
+            hero.TakeDamage();
+        }
+        else if (character is Enemy)
+        {
+
+            Destroy(character.gameObject);
+        }
         
     }
 

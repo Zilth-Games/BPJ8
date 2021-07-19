@@ -42,9 +42,9 @@ public class Skeleton2 : Enemy
                 return;
             }
         }
-
-        SetPosition(targetCell);
-
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
+        SetWorldPosition(targetCell);
+        GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
     }
 }
 

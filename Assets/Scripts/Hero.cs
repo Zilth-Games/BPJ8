@@ -1,27 +1,71 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(Pathfinder))]
 public class Hero : Character
 {
-    //public override void Move()
-    //{
-    //    FindPath();
-    //    //if (roadPath == null) return;
-    //    Vector3 worldPt = GameManager.Instance.GetCellCenterWorld(new Vector3Int(roadPath[currentNodeIndex].X, roadPath[currentNodeIndex].Y, 1));
-    //    transform.position = worldPt;
+    private Pathfinder pathfinder;
+    [SerializeField] private HeartUI heartPrefab;
+    [SerializeField] private Transform healthBar;
 
-    //    currentCell = GameManager.Instance.WorldPointToCell(transform.position);
 
-    //    if (currentNodeIndex == 0)
-    //    {
-    //        Debug.Log("Win");
-    //        GameManager.Instance.isLevelFinished = true;
-    //    }
-    //}
+    private List<HeartUI> heartUIs;
 
-    //public override void FindPath()
-    //{
-    //    base.FindPath();
-    //    DrawRoad();
-    //}
+
+    protected override void Awake()
+    {
+        base.Awake();
+        CreateHearts();
+        pathfinder = GetComponent<Pathfinder>();
+        pathfinder.TargetCell = GameManager.Instance.heroTargetCell;
+        SetWorldPosition(new Vector3Int(currentCell.x, currentCell.y, 0));
+
+    }
+    public override void Move()
+    {
+        Vector3Int targetCell = Vector3Int.zero;
+        if (pathfinder.FindPath(currentCell, out targetCell))
+        {
+            SetWorldPosition(targetCell);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    private void CreateHearts()
+    {
+        heartUIs = new List<HeartUI>(health);
+        for (int i = 0; i < health; i++)
+        {
+            CreateHeartUI();
+        }
+    }
+
+    private void CreateHeartUI()
+    {
+        var heartUI = Instantiate(heartPrefab, healthBar);
+        heartUIs.Add(heartUI);
+    }
+
+    public void TakeDamage()
+    {
+        health--;
+        heartUIs[health].HeartForeground.fillAmount = 0;
+        if (health == 0)
+        {
+            Debug.Log("Dead");
+            GameManager.Instance.isLevelFinished = true;
+        }
+    }
+
+    public void IncreaseHealth()
+    {
+        health++;
+        if (health > heartUIs.Count)
+        {
+            CreateHeartUI();
+        }
+    }
 }
