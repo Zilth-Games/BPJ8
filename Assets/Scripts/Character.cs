@@ -5,7 +5,7 @@ public abstract class Character : MonoBehaviour
 {
     private Vector3Int[,] nodes;
     private Astar astar;
-    private List<Node> roadPath = new List<Node>();
+    protected List<Node> roadPath = new List<Node>();
 
     protected int currentNodeIndex;
     protected Vector2Int currentCell;
@@ -19,14 +19,9 @@ public abstract class Character : MonoBehaviour
         transform.position = GameManager.Instance.GetCellCenterWorld(new Vector3Int(currentCell.x, currentCell.y, 1));
     }
 
-    public virtual void Move()
-    {
-        FindPath();
-        Vector3 worldPt = GameManager.Instance.GetCellCenterWorld(new Vector3Int(roadPath[currentNodeIndex].X, roadPath[currentNodeIndex].Y, 1));
-        transform.position = worldPt;
-    }
+    public abstract void Move();
 
-    public void FindPath()
+    public virtual void FindPath()
     {
         nodes = GameManager.Instance.CreateGrid();
 
@@ -41,8 +36,10 @@ public abstract class Character : MonoBehaviour
 
         //DrawRoad();
     }
-    private void DrawRoad()
+    protected void DrawRoad()
     {
+
+        GameManager.Instance.RoadTilemap.ClearAllTiles();
         for (int i = 0; i < roadPath.Count; i++)
         {
             GameManager.Instance.SetTileToRoadMap(roadPath[i].X, roadPath[i].Y);
