@@ -7,6 +7,7 @@ public class EnemyPlacer : MonoBehaviour
 {
     [SerializeField] private Tilemap placementTilemap;
     [SerializeField] private Cursor cursor;
+    public Transform enemyParent;
 
     public Enemy selectedEnemyPrefab { get; set; }
     public EnemyUIButton currentEnemyButton { get; set; }
@@ -15,6 +16,9 @@ public class EnemyPlacer : MonoBehaviour
     {
         if (selectedEnemyPrefab != null)
         {
+            placementTilemap.GetComponent<TilemapRenderer>().enabled = true;
+
+
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cell = placementTilemap.WorldToCell(mouseWorldPos);
             Vector3 cellWorldPos = placementTilemap.GetCellCenterWorld(cell);
@@ -24,7 +28,7 @@ public class EnemyPlacer : MonoBehaviour
                 cursor.Placable(selectedEnemyPrefab.sprite);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity);
+                    Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity, enemyParent);
                     currentEnemyButton.enemySourceCount--;
                     currentEnemyButton.UpdateText();
                     placementTilemap.SetTile(cell, null);
@@ -32,6 +36,7 @@ public class EnemyPlacer : MonoBehaviour
 
                     if (currentEnemyButton.enemySourceCount == 0)
                     {
+                        placementTilemap.GetComponent<TilemapRenderer>().enabled = false;
                         currentEnemyButton.Button.interactable = false;
                         selectedEnemyPrefab = null;
                         currentEnemyButton = null;
@@ -49,6 +54,7 @@ public class EnemyPlacer : MonoBehaviour
             {
                 cursor.CursorNull();
                 selectedEnemyPrefab = null;
+                placementTilemap.GetComponent<TilemapRenderer>().enabled = false;
             }
         }
 
