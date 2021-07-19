@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: c216d4a8bf8a2954689aa832b77d6e01, type: 3}
-  count: 0
+  count: 1
   currentCell: {x: 0, y: 0}

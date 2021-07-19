@@ -2699,15 +2699,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableTilemap: {fileID: 302668478}
-  trapTilemap: {fileID: 175108548}
-  roadTilemap: {fileID: 175108548}
+  trapTilemap: {fileID: 0}
+  roadTilemap: {fileID: 0}
   roadTile: {fileID: 0}
   walkableTile: {fileID: 0}
   enemyPrefabs:
-  - {fileID: 2615405188090762344, guid: 0021699c7a33ce74a8e52a43e28b177f, type: 3}
-  - {fileID: 4580477372755307859, guid: dfa2b8f51e4025547821819ba616a51a, type: 3}
-  - {fileID: 2232987096024731952, guid: d5b9a3e21e01b934d8c76bda01fe44e6, type: 3}
-  - {fileID: -1714756055509093569, guid: b961c3aa5b18d8147ac9b45d17fa2d4c, type: 3}
+  - {fileID: 4939604862800569212, guid: 0021699c7a33ce74a8e52a43e28b177f, type: 3}
+  - {fileID: 2572530293152281150, guid: b961c3aa5b18d8147ac9b45d17fa2d4c, type: 3}
+  - {fileID: 4360863780168035428, guid: d5b9a3e21e01b934d8c76bda01fe44e6, type: 3}
+  - {fileID: 1366241666282550917, guid: dfa2b8f51e4025547821819ba616a51a, type: 3}
   enemyUIButtonPrefab: {fileID: 741110188, guid: b599fbd3ddff04b4c8479e97d4464ed8,
     type: 3}
   enemyUIButtonParent: {fileID: 1165008961}
