@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - dialogueString: Hi Knight
-    personSprite: {fileID: 21300000, guid: 81620a7e91b85f6418ba0870b43fac9a, type: 3}
+    personSprite: {fileID: 21300000, guid: 0368642526f63024abd09975aff5c920, type: 3}
   - dialogueString: Hi Princess
-    personSprite: {fileID: 21300000, guid: da4130883ab41ee48b8ca4c71156d096, type: 3}
+    personSprite: {fileID: 21300000, guid: 7b48e1dc94d799b429823cb7f739207f, type: 3}

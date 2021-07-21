@@ -4364,6 +4364,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358564, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7b48e1dc94d799b429823cb7f739207f,
+        type: 3}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 288541552709358565, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540573598425297997, guid: d68787c4d24353246bfec43ce9b0eeac,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d36c3d086c753a54aa31bfd9f100ad65,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68787c4d24353246bfec43ce9b0eeac, type: 3}
 --- !u!1001 &6176509771729380195
