@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 public abstract class Enemy : Character , IInteractable
 {
+    AudioManager audioManager;
     public Sprite sprite;
     public int count;
 
@@ -21,6 +22,7 @@ public abstract class Enemy : Character , IInteractable
     {
         var hero = (Hero)character;
         hero.TakeDamage();
+
         GameManager.Instance.Enemies.Remove(this);
         GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
         Destroy(gameObject);

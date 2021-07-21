@@ -6,13 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    private AudioManager audioManager;
     [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
     [SerializeField] private Button playButton;
+    [SerializeField] private Button soundButton;
     [Header("Fast Button Sprites")]
     [SerializeField] private Sprite fastButtonSprite1;
     [SerializeField] private Sprite fastButtonSprite2;
+
+    [Header("Sound Button Sprites")]
+    [SerializeField] private Sprite soundButtonSprite1;
+    [SerializeField] private Sprite soundButtonSprite2;
     [Header("Tilemaps")]
 
     [SerializeField] private Tilemap walkableTilemap;
@@ -58,6 +64,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        audioManager=FindObjectOfType<AudioManager>();
+
         CreateEnemyUIButtons();
         enemies = new List<Enemy>();
 
@@ -150,10 +158,12 @@ public class GameManager : Singleton<GameManager>
 
     public void RestartButton()
     {
+        audioManager.Play("Button");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void FastButton()
     {
+        audioManager.Play("Button");
         Time.timeScale += 1.5f;
         if(Time.timeScale==4f)
         {
@@ -165,12 +175,28 @@ public class GameManager : Singleton<GameManager>
             fastButton.image.sprite = fastButtonSprite2;
         }
     }
+    public void VoiceButton()
+    {
+        audioManager.Play("Button");
+        AudioSource audioSource = audioManager.GetComponent<AudioSource>();
+        if (audioSource.volume == 0.511f)
+        {
+            soundButton.image.sprite = soundButtonSprite2;
+           audioSource.volume  = 0f;
+        }
+        else
+        {
+            soundButton.image.sprite = soundButtonSprite1;
+            audioSource.volume= 0.511f;
+        }
+    }
     public void LoadNextLevel()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void PlayButton()
     {
+        audioManager.Play("Button");
         isGameStarted = true;
         timer = 0;
         playButton.image.enabled = false;

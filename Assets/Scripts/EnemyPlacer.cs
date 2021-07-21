@@ -5,13 +5,17 @@ using UnityEngine.Tilemaps;
 
 public class EnemyPlacer : MonoBehaviour
 {
+    private AudioManager audioManager;
     [SerializeField] private Tilemap placementTilemap;
     [SerializeField] private Cursor cursor;
     public Transform enemyParent;
 
     public Enemy selectedEnemyPrefab { get; set; }
     public EnemyUIButton currentEnemyButton { get; set; }
-
+    private void Awake()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     private void Update()
     {
         if (selectedEnemyPrefab != null)
@@ -28,6 +32,7 @@ public class EnemyPlacer : MonoBehaviour
                 cursor.Placable(selectedEnemyPrefab.sprite);
                 if (Input.GetMouseButtonDown(0))
                 {
+                    audioManager.Play("Placement");
                     var enemy = Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity, enemyParent);
                     GameManager.Instance.Enemies.Add(enemy);
                     currentEnemyButton.enemySourceCount--;
@@ -49,7 +54,10 @@ public class EnemyPlacer : MonoBehaviour
             else
             {
                 cursor.IsntPlacable();
-
+                if (Input.GetMouseButtonDown(0))
+                {
+                    audioManager.Play("FalsePlacement");
+                }
             }
             if (Input.GetMouseButtonDown(1))
             {
