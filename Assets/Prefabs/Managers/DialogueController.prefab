@@ -50,10 +50,10 @@ MonoBehaviour:
   - dialogueString: I will save you princess.
     personSprite: {fileID: 21300000, guid: 7b48e1dc94d799b429823cb7f739207f, type: 3}
     musicID: Knight_Voice
-  - dialogueString: I won't let this happen!
+  - dialogueString: I wont let this happen!
     personSprite: {fileID: 423828613696989058, guid: 096c42d3973e1a44e95c4fbd8b205bef,
       type: 3}
     musicID: Dungeon_Master
-  - dialogueString: Ha ha you think so.
+  - dialogueString: Ha ha you think so...
     personSprite: {fileID: 21300000, guid: 7b48e1dc94d799b429823cb7f739207f, type: 3}
     musicID: Knight_Voice

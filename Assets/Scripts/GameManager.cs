@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Source Counts")]
+    [SerializeField] private int skeleton1Count;
+    [SerializeField] private int skeleton2Count;
+    [SerializeField] private int fireBallCount;
+    [SerializeField] private int vampireCount;
     [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
@@ -77,6 +82,7 @@ public class GameManager : Singleton<GameManager>
         MainCamera = Camera.main;
         timer = stepInterval;
         hero = FindObjectOfType<Hero>();
+
     }
 
     private void Update()
@@ -181,7 +187,7 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.instance.Play("Button");
         AudioSource audioSource = AudioManager.instance.GetComponent<AudioSource>();
-        if (audioSource.volume == 0.511f)
+        if (audioSource.volume == 0.45f)
         {
             soundButton.image.sprite = soundButtonSprite2;
             audioSource.volume = 0f;
@@ -189,7 +195,7 @@ public class GameManager : Singleton<GameManager>
         else
         {
             soundButton.image.sprite = soundButtonSprite1;
-            audioSource.volume = 0.511f;
+            audioSource.volume = 0.45f;
         }
     }
     public void LoadLevel(int buildIndex)
