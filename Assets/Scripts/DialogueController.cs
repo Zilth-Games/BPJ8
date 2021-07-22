@@ -29,7 +29,7 @@ public class DialogueController : MonoBehaviour
     private IEnumerator Start()
     {
         if (DialogueIsShown) yield break;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         dialogueBox.gameObject.SetActive(true);
         dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
         DialogueIsShown = true;
@@ -44,6 +44,7 @@ public class DialogueController : MonoBehaviour
         if(currentDialogueIndex == dialogues.Count)
         {
             dialogueBox.gameObject.SetActive(false);
+            dialogueBox.CloseBlockPanel();
             return;
         }
         dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
