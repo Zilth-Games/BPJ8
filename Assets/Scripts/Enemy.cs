@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 public abstract class Enemy : Character , IInteractable
 {
-    AudioManager audioManager;
     public Sprite sprite;
     public int count;
+    public string deathMusicID;
 
     protected override void Awake()
     {
@@ -23,6 +23,7 @@ public abstract class Enemy : Character , IInteractable
         var hero = (Hero)character;
         hero.TakeDamage();
 
+        AudioManager.instance.Play(deathMusicID);
         GameManager.Instance.Enemies.Remove(this);
         GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, GameManager.Instance.WalkableTile);
         Destroy(gameObject);

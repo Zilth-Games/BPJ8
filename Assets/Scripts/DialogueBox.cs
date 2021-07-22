@@ -12,19 +12,21 @@ public class DialogueBox : MonoBehaviour
 
     public Button NextDialogueButton { get => nextDialogueButton; }
 
-    public void SetDialogue(Sprite sprite, string dialogueString)
+    public void SetDialogue(Sprite sprite, string dialogueString,string musicID)
     {
         dialogueText.text = null;
         personImage.sprite = sprite;
-        StartCoroutine(DialogueTextCo(dialogueString));
+        StartCoroutine(DialogueTextCo(dialogueString,musicID));
         //dialogueText.text = dialogueString;
     }
-    IEnumerator DialogueTextCo(string dialogueString)
+    IEnumerator DialogueTextCo(string dialogueString, string musicId)
     {
         for (int i = 0; i < dialogueString.Length; i++)
         {
             dialogueText.text += dialogueString[i];
+            AudioManager.instance.Play(musicId);
             yield return new WaitForSeconds(dialogueLetterInterval);
+
         }
     }
 }

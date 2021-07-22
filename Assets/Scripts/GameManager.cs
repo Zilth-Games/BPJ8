@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    private AudioManager audioManager;
     [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
@@ -64,7 +63,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        audioManager=FindObjectOfType<AudioManager>();
 
         CreateEnemyUIButtons();
         enemies = new List<Enemy>();
@@ -158,12 +156,12 @@ public class GameManager : Singleton<GameManager>
 
     public void RestartButton()
     {
-        audioManager.Play("Button");
+        AudioManager.instance.Play("Button");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void FastButton()
     {
-        audioManager.Play("Button");
+        AudioManager.instance.Play("Button");
         Time.timeScale += 1.5f;
         if(Time.timeScale==4f)
         {
@@ -177,8 +175,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void VoiceButton()
     {
-        audioManager.Play("Button");
-        AudioSource audioSource = audioManager.GetComponent<AudioSource>();
+        AudioManager.instance.Play("Button");
+        AudioSource audioSource = AudioManager.instance.GetComponent<AudioSource>();
         if (audioSource.volume == 0.511f)
         {
             soundButton.image.sprite = soundButtonSprite2;
@@ -196,7 +194,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void PlayButton()
     {
-        audioManager.Play("Button");
+        AudioManager.instance.Play("Button");
         isGameStarted = true;
         timer = 0;
         playButton.image.enabled = false;
