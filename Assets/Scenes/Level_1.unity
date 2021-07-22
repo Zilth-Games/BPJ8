@@ -220,10 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ddcdead66a6184aae50e0e4901174a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeleton1Count: 1
-  skeleton2Count: 0
-  fireBallCount: 0
-  vampireCount: 0
   restartButton: {fileID: 1170595867}
   fastButton: {fileID: 1391928437}
   playButton: {fileID: 2035763940}
@@ -244,7 +240,7 @@ MonoBehaviour:
   enemyStages:
   - enemyPrefab: {fileID: 4939604862800569212, guid: 0021699c7a33ce74a8e52a43e28b177f,
       type: 3}
-    enemyCount: 2
+    enemyCount: 1
   enemyUIButtonPrefab: {fileID: 741110188, guid: b599fbd3ddff04b4c8479e97d4464ed8,
     type: 3}
   enemyUIButtonParent: {fileID: 56272574}
@@ -2884,7 +2880,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 57100154}
-        m_MethodName: RestartButton
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

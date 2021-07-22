@@ -7,11 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("Source Counts")]
-    [SerializeField] private int skeleton1Count;
-    [SerializeField] private int skeleton2Count;
-    [SerializeField] private int fireBallCount;
-    [SerializeField] private int vampireCount;
+
     [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
