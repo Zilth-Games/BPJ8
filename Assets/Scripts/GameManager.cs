@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform enemyUIButtonParent;
 
     [SerializeField] private float stepInterval = 0.5f;
-    private float timer ;
+    private float timer;
 
     private Hero hero;
     private List<Enemy> enemies;
@@ -57,9 +57,10 @@ public class GameManager : Singleton<GameManager>
     }
     public Vector2Int heroTargetCell;
 
-    public TileBase WalkableTile { get => walkableTile;  }
-    public Tilemap RoadTilemap { get => roadTilemap;  }
-    public List<Enemy> Enemies { get => enemies;  }
+    public TileBase WalkableTile { get => walkableTile; }
+    public Tilemap RoadTilemap { get => roadTilemap; }
+    public List<Enemy> Enemies { get => enemies; }
+    public Button PlayButton { get => playButton; }
 
     private void Awake()
     {
@@ -148,8 +149,8 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < enemyPrefabs.Count; i++)
         {
-           var enemyButton= Instantiate(enemyUIButtonPrefab,enemyUIButtonParent);
-           enemyButton.SetProps(enemyPrefabs[i].sprite,enemyPrefabs[i].count,enemyPrefabs[i]);
+            var enemyButton = Instantiate(enemyUIButtonPrefab, enemyUIButtonParent);
+            enemyButton.SetProps(enemyPrefabs[i].sprite, enemyPrefabs[i].count, enemyPrefabs[i]);
             enemyUIButtons.Add(enemyButton);
         }
     }
@@ -163,7 +164,7 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.instance.Play("Button");
         Time.timeScale += 1.5f;
-        if(Time.timeScale==4f)
+        if (Time.timeScale == 4f)
         {
             fastButton.image.sprite = fastButtonSprite1;
             Time.timeScale = 1f;
@@ -180,19 +181,19 @@ public class GameManager : Singleton<GameManager>
         if (audioSource.volume == 0.511f)
         {
             soundButton.image.sprite = soundButtonSprite2;
-           audioSource.volume  = 0f;
+            audioSource.volume = 0f;
         }
         else
         {
             soundButton.image.sprite = soundButtonSprite1;
-            audioSource.volume= 0.511f;
+            audioSource.volume = 0.511f;
         }
     }
     public void LoadNextLevel()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void PlayButton()
+    public void Play()
     {
         AudioManager.instance.Play("Button");
         isGameStarted = true;

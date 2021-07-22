@@ -13,7 +13,9 @@ public class Peaks : MonoBehaviour, IInteractable
         }
         else if (character is Enemy)
         {
-            GameManager.Instance.Enemies.Remove((Enemy)character);
+            var enemy = (Enemy)character;
+            GameManager.Instance.Enemies.Remove(enemy);
+            AudioManager.instance.Play(enemy.deathMusicID);
             GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)character.CurrentCell, GameManager.Instance.WalkableTile);
             Destroy(character.gameObject);
 

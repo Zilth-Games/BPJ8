@@ -5,17 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class EnemyPlacer : MonoBehaviour
 {
-    private AudioManager audioManager;
     [SerializeField] private Tilemap placementTilemap;
     [SerializeField] private Cursor cursor;
     public Transform enemyParent;
 
     public Enemy selectedEnemyPrefab { get; set; }
     public EnemyUIButton currentEnemyButton { get; set; }
-    private void Awake()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
     private void Update()
     {
         if (selectedEnemyPrefab != null)
@@ -32,7 +27,7 @@ public class EnemyPlacer : MonoBehaviour
                 cursor.Placable(selectedEnemyPrefab.sprite);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    audioManager.Play("Placement");
+                    AudioManager.instance.Play("Placement");
                     var enemy = Instantiate(selectedEnemyPrefab, cellWorldPos, Quaternion.identity, enemyParent);
                     GameManager.Instance.Enemies.Add(enemy);
                     currentEnemyButton.enemySourceCount--;
@@ -40,6 +35,7 @@ public class EnemyPlacer : MonoBehaviour
                     placementTilemap.SetTile(cell, null);
                     cursor.transform.position = new Vector3(10, 10, 0);
 
+                    GameManager.Instance.PlayButton.interactable = true;
                     if (currentEnemyButton.enemySourceCount == 0)
                     {
                         placementTilemap.GetComponent<TilemapRenderer>().enabled = false;
@@ -56,7 +52,7 @@ public class EnemyPlacer : MonoBehaviour
                 cursor.IsntPlacable();
                 if (Input.GetMouseButtonDown(0))
                 {
-                    audioManager.Play("FalsePlacement");
+                    AudioManager.instance.Play("FalsePlacement");
                 }
             }
             if (Input.GetMouseButtonDown(1))
