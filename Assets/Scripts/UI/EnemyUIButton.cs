@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemyUIButton : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     [SerializeField] private Image image;
     [SerializeField] private Text text;
     [SerializeField] private Button button;
@@ -18,6 +20,7 @@ public class EnemyUIButton : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         enemyPlacer = FindObjectOfType<EnemyPlacer>();
         button.onClick.AddListener(ChooseEnemy);
     }
@@ -36,6 +39,7 @@ public class EnemyUIButton : MonoBehaviour
 
     public void ChooseEnemy()
     {
+        audioManager.Play("Button");
         enemyPlacer.selectedEnemyPrefab = enemyPrefab;
         enemyPlacer.currentEnemyButton = this;
     }

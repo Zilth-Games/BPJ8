@@ -6,16 +6,26 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    
+    private AudioManager audioManager;
+    [Header("Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button fastButton;
     [SerializeField] private Button playButton;
+    [SerializeField] private Button soundButton;
+    [Header("Fast Button Sprites")]
     [SerializeField] private Sprite fastButtonSprite1;
     [SerializeField] private Sprite fastButtonSprite2;
+
+    [Header("Sound Button Sprites")]
+    [SerializeField] private Sprite soundButtonSprite1;
+    [SerializeField] private Sprite soundButtonSprite2;
+    [Header("Tilemaps")]
 
     [SerializeField] private Tilemap walkableTilemap;
     [SerializeField] private Tilemap trapTilemap;
     [SerializeField] private Tilemap roadTilemap;
+
+    [Header("Tiles")]
 
     [SerializeField] private TileBase roadTile;
     [SerializeField] private TileBase walkableTile;
@@ -54,6 +64,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        audioManager=FindObjectOfType<AudioManager>();
+
         CreateEnemyUIButtons();
         enemies = new List<Enemy>();
 
@@ -68,11 +80,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         if (isLevelFinished) return;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isGameStarted = !isGameStarted;
-            timer = 0;
-        }
+
         if (isGameStarted)
         {
             if (timer > 0)
@@ -150,26 +158,48 @@ public class GameManager : Singleton<GameManager>
 
     public void RestartButton()
     {
+        audioManager.Play("Button");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void FastButton()
     {
+        audioManager.Play("Button");
         Time.timeScale += 1.5f;
         if(Time.timeScale==4f)
         {
-            fastButton.GetComponent<Image>().sprite = fastButtonSprite1;
+            fastButton.image.sprite = fastButtonSprite1;
             Time.timeScale = 1f;
         }
         if (Time.timeScale == 2.5f)
         {
-            fastButton.GetComponent<Image>().sprite = fastButtonSprite2;
+            fastButton.image.sprite = fastButtonSprite2;
         }
+    }
+    public void VoiceButton()
+    {
+        audioManager.Play("Button");
+        AudioSource audioSource = audioManager.GetComponent<AudioSource>();
+        if (audioSource.volume == 0.511f)
+        {
+            soundButton.image.sprite = soundButtonSprite2;
+           audioSource.volume  = 0f;
+        }
+        else
+        {
+            soundButton.image.sprite = soundButtonSprite1;
+            audioSource.volume= 0.511f;
+        }
+    }
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void PlayButton()
     {
+        audioManager.Play("Button");
         isGameStarted = true;
-        
-        playButton.GetComponent<Image>().enabled = false;
+        timer = 0;
+        playButton.image.enabled = false;
         for (int i = 0; i < enemyUIButtons.Count; i++)
         {
             enemyUIButtons[i].Button.interactable = false;

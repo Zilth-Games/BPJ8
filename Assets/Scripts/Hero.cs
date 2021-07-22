@@ -4,9 +4,11 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Pathfinder))]
 public class Hero : Character
 {
+    AudioManager audioManager;
     private Pathfinder pathfinder;
     [SerializeField] private HeartUI heartPrefab;
     [SerializeField] private Transform healthBar;
+    public ParticleSystem bloodParticle;
 
 
     private List<HeartUI> heartUIs;
@@ -14,6 +16,7 @@ public class Hero : Character
 
     protected override void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         base.Awake();
         CreateHearts();
         pathfinder = GetComponent<Pathfinder>();
@@ -31,6 +34,13 @@ public class Hero : Character
         else
         {
             return;
+        }
+
+        if (GameManager.Instance.heroTargetCell == currentCell)
+        {
+            Debug.Log("Win");
+            GameManager.Instance.isLevelFinished = true;
+            //GameManager.Instance.LoadNextLevel();
         }
     }
 
@@ -51,12 +61,17 @@ public class Hero : Character
 
     public void TakeDamage()
     {
+        bloodParticle.Play();
+        audioManager.Play("Knight_Damage");
+
         health--;
         heartUIs[health].HeartForeground.fillAmount = 0;
         if (health == 0)
         {
+            audioManager.Play("Knight_Death");
             Debug.Log("Dead");
             GameManager.Instance.isLevelFinished = true;
+            Destroy(gameObject);
         }
     }
 

@@ -6,6 +6,9 @@ public abstract class Character : MonoBehaviour
     protected Vector2Int currentCell;
 
     public int health;
+
+    public Vector2Int CurrentCell { get => currentCell;  }
+
     protected virtual void Awake()
     {
         currentCell = GameManager.Instance.WorldPointToCell(transform.position);
