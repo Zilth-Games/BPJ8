@@ -2,16 +2,12 @@
 public abstract class Enemy : Character , IInteractable
 {
     public Sprite sprite;
-    public int count;
     public string deathMusicID;
-
-    public static int totalCount = 0;
 
     protected override void Awake()
     {
         base.Awake();
         GetComponent<SpriteRenderer>().sprite = sprite;
-        totalCount += count;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
