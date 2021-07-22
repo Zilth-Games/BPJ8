@@ -13,20 +13,20 @@ public class Fireball : Enemy
         Vector3Int downCell = new Vector3Int(currentCell.x, currentCell.y-1, 0);
         switch (i)
         {
-            case 0://Left
+            case 0://Right
                 i++;
-                if (!GameManager.Instance.WalkableTilemap.HasTile(leftCell)) { Move(); return; }
-                targetCell = leftCell;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(rightCell)) { Move(); return; }
+                targetCell = rightCell;
                 break;
             case 1://up
                 i++;
                 if (!GameManager.Instance.WalkableTilemap.HasTile(upCell)) { Move(); return; }
                 targetCell = upCell;
                 break;
-            case 2://right
+            case 2://left
                 i++;
-                if (!GameManager.Instance.WalkableTilemap.HasTile(rightCell)) { Move(); return; }
-                targetCell = rightCell;
+                if (!GameManager.Instance.WalkableTilemap.HasTile(leftCell)) { Move(); return; }
+                targetCell = leftCell;
                 break;
             case 3://down
                 i++;
