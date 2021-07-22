@@ -6,6 +6,7 @@ public class Key : MonoBehaviour, IInteractable
     {
         if (character is Hero)
         {
+            if (character.health == 0) return;
             AudioManager.instance.Play("Key_Pickup");
             FindObjectOfType<Door>().Open();
         }
