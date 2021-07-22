@@ -8,10 +8,10 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private Text dialogueText;
     [SerializeField] private Button nextDialogueButton;
     [SerializeField] private float dialogueLetterInterval;
+    [SerializeField] private CanvasGroup blockPanel;
 
 
     public Button NextDialogueButton { get => nextDialogueButton; }
-
     public void SetDialogue(Sprite sprite, string dialogueString,string musicID)
     {
         dialogueText.text = null;
@@ -28,5 +28,11 @@ public class DialogueBox : MonoBehaviour
             yield return new WaitForSeconds(dialogueLetterInterval);
 
         }
+    }
+    public void CloseBlockPanel()
+    {
+        blockPanel.blocksRaycasts = false;
+        blockPanel.interactable = false;
+        blockPanel.alpha = 0;
     }
 }
