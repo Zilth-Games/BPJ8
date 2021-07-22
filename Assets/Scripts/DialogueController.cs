@@ -28,7 +28,11 @@ public class DialogueController : MonoBehaviour
     }
     private IEnumerator Start()
     {
-        if (DialogueIsShown) yield break;
+        if (DialogueIsShown)
+        {
+            dialogueBox.CloseBlockPanel();
+            yield break;
+        }
         yield return new WaitForSeconds(.2f);
         dialogueBox.gameObject.SetActive(true);
         dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
