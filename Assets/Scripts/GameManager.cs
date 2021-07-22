@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TileBase roadTile;
     [SerializeField] private TileBase walkableTile;
 
-    [SerializeField] private List<Enemy> enemyPrefabs;
+    [SerializeField] private List<EnemyStage> enemyStages;
     [SerializeField] private EnemyUIButton enemyUIButtonPrefab;
     private List<EnemyUIButton> enemyUIButtons = new List<EnemyUIButton>();
     [SerializeField] private Transform enemyUIButtonParent;
@@ -156,10 +156,10 @@ public class GameManager : Singleton<GameManager>
 
     public void CreateEnemyUIButtons()
     {
-        for (int i = 0; i < enemyPrefabs.Count; i++)
+        for (int i = 0; i < enemyStages.Count; i++)
         {
             var enemyButton = Instantiate(enemyUIButtonPrefab, enemyUIButtonParent);
-            enemyButton.SetProps(enemyPrefabs[i].sprite, enemyPrefabs[i].count, enemyPrefabs[i]);
+            enemyButton.SetProps(enemyStages[i].EnemyPrefab.sprite, enemyStages[i].EnemyCount, enemyStages[i].EnemyPrefab);
             enemyUIButtons.Add(enemyButton);
         }
     }
