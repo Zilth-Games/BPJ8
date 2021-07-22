@@ -10,13 +10,19 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private float dialogueLetterInterval;
     [SerializeField] private CanvasGroup blockPanel;
 
+    private Coroutine dialogCoroutine;
+
 
     public Button NextDialogueButton { get => nextDialogueButton; }
     public void SetDialogue(Sprite sprite, string dialogueString,string musicID)
     {
         dialogueText.text = null;
         personImage.sprite = sprite;
-        StartCoroutine(DialogueTextCo(dialogueString,musicID));
+        if (dialogCoroutine != null)
+        {
+            StopCoroutine(dialogCoroutine);
+        }
+        dialogCoroutine = StartCoroutine(DialogueTextCo(dialogueString,musicID));
         //dialogueText.text = dialogueString;
     }
     IEnumerator DialogueTextCo(string dialogueString, string musicId)
