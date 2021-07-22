@@ -132,6 +132,7 @@ MonoBehaviour:
   health: 0
   sprite: {fileID: 21300000, guid: c216d4a8bf8a2954689aa832b77d6e01, type: 3}
   count: 1
+  deathMusicID: Vampire_Death
 --- !u!50 &8290163748047585489
 Rigidbody2D:
   serializedVersion: 4
