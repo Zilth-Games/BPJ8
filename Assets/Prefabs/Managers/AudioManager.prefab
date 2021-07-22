@@ -110,3 +110,15 @@ MonoBehaviour:
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
+  - name: Door_Opening
+    clip: {fileID: 8300000, guid: f476192961421374ba1613365989d2da, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Key_Pickup
+    clip: {fileID: 8300000, guid: 22d719ac97d3b784b96cb5bb3b772e4b, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0

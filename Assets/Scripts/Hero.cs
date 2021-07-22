@@ -69,6 +69,7 @@ public class Hero : Character
             AudioManager.instance.Play("Knight_Death");
             Debug.Log("Dead");
             GameManager.Instance.isLevelFinished = true;
+            GameManager.Instance.RestartLevel();
             Destroy(gameObject);
         }
     }
