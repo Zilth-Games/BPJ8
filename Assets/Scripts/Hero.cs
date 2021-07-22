@@ -76,7 +76,14 @@ public class Hero : Character
 
     public void IncreaseHealth()
     {
+        if (health < heartUIs.Count)
+        {
+            heartUIs[health ].HeartForeground.fillAmount = 1;
+        }
         health++;
+        AudioManager.instance.Play("Potion_Drink");
+        
+
         if (health > heartUIs.Count)
         {
             CreateHeartUI();

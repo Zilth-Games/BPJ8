@@ -122,3 +122,9 @@ MonoBehaviour:
     pitch: 1
     audioSource: {fileID: 0}
     loop: 0
+  - name: Potion_Drink
+    clip: {fileID: 8300000, guid: 1046c8850b5a72f49bafa46f37e9b17f, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0

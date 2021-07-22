@@ -24,6 +24,7 @@ public class Skeleton1 : Enemy
             }
             else
             {
+                GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
                 return;
             }
 
@@ -41,6 +42,7 @@ public class Skeleton1 : Enemy
             }
             else
             {
+                GameManager.Instance.WalkableTilemap.SetTile((Vector3Int)currentCell, null);
                 return;
             }
         }
