@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Open()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.rotation = Quaternion.Euler(0,0,90);
+        AudioManager.instance.Play("Door_Opening");
     }
 }
