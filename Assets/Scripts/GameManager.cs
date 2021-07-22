@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
@@ -35,6 +36,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform enemyUIButtonParent;
 
     [SerializeField] private float stepInterval = 0.5f;
+
+    [SerializeField] private Animator levelLoaderAnimator;
     private float timer;
 
     private Hero hero;
@@ -158,7 +161,7 @@ public class GameManager : Singleton<GameManager>
     public void RestartButton()
     {
         AudioManager.instance.Play("Button");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
     public void FastButton()
     {
@@ -189,9 +192,20 @@ public class GameManager : Singleton<GameManager>
             audioSource.volume = 0.511f;
         }
     }
-    public void LoadNextLevel()
+    public void LoadLevel(int buildIndex)
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadLevelCo(buildIndex));
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void LoadNextLevel(int buildIndex)
+    {
+        LoadLevel(buildIndex);
+    }
+    private IEnumerator LoadLevelCo(int buildIndex)
+    {
+        levelLoaderAnimator.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(buildIndex);
     }
     public void Play()
     {

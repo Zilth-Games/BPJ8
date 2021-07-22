@@ -10,6 +10,8 @@ public class DialogueController : MonoBehaviour
 
     private int currentDialogueIndex;
 
+
+    public static bool DialogueIsShown;
     public Dialogue CurrentDialogue
     {
         get
@@ -26,10 +28,11 @@ public class DialogueController : MonoBehaviour
     }
     private IEnumerator Start()
     {
+        if (DialogueIsShown) yield break;
         yield return new WaitForSeconds(.5f);
         dialogueBox.gameObject.SetActive(true);
         dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
-
+        DialogueIsShown = true;
     }
     private void OnDestroy()
     {
