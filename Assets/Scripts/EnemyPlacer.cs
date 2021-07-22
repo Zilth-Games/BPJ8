@@ -34,8 +34,9 @@ public class EnemyPlacer : MonoBehaviour
                     currentEnemyButton.UpdateText();
                     placementTilemap.SetTile(cell, null);
                     cursor.transform.position = new Vector3(10, 10, 0);
-
-                    GameManager.Instance.PlayButton.interactable = true;
+                    EnemyUIButton.totalEnemySourceCount--;
+                    if (EnemyUIButton.totalEnemySourceCount == 0)
+                        GameManager.Instance.PlayButton.interactable = true;
                     if (currentEnemyButton.enemySourceCount == 0)
                     {
                         placementTilemap.GetComponent<TilemapRenderer>().enabled = false;

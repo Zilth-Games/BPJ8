@@ -13,7 +13,8 @@ public class EnemyUIButton : MonoBehaviour
     private Enemy enemyPrefab;
     EnemyPlacer enemyPlacer ;
 
-    
+
+    public static int totalEnemySourceCount;
     public int enemySourceCount;
 
     public Button Button { get => button; set => button = value; }
@@ -34,6 +35,7 @@ public class EnemyUIButton : MonoBehaviour
         image.sprite = enemySprite;
         this.enemySourceCount = enemySourceCount;
         this.enemyPrefab = enemyPrefab;
+        totalEnemySourceCount += enemySourceCount;
         UpdateText();
     }
 
