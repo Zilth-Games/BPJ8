@@ -164,7 +164,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void RestartButton()
+    public void RestartLevel()
     {
         AudioManager.instance.Play("Button");
         LoadLevel(SceneManager.GetActiveScene().buildIndex);

@@ -38,7 +38,7 @@ public class Hero : Character
         {
             Debug.Log("Win");
             GameManager.Instance.isLevelFinished = true;
-            //GameManager.Instance.LoadNextLevel();
+            GameManager.Instance.RestartLevel();
         }
     }
 
