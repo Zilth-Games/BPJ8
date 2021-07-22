@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7458919132425775648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7458919132425775649}
+  - component: {fileID: 7458919132425775650}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7458919132425775649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458919132425775648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7458919132425775650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458919132425775648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565ec9e02aa3784eb2b4e80673e2ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Back_Ground_Music
+    clip: {fileID: 8300000, guid: 4e4b3bdd3d1a25d4f8a43e49f0f9ab47, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 1
+  - name: Button
+    clip: {fileID: 8300000, guid: 8a419d134ab8aab4b8f7c235eb762607, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Knight_Damage
+    clip: {fileID: 8300000, guid: 3739751c44e9f6e4cbfba440891343fc, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Knight_Voice
+    clip: {fileID: 8300000, guid: de5ecb2c587c40e49b8f4d907fd88941, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Knight_Death
+    clip: {fileID: 8300000, guid: c014fafd3a0513440bde26361a964ff2, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Princess_Voice
+    clip: {fileID: 8300000, guid: 8ef4473f3a809c64b97946473f35b2f8, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Skeleton_Death
+    clip: {fileID: 8300000, guid: 83c0e1b50a1010645a0a34b3320bda5a, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Vampire_Death
+    clip: {fileID: 8300000, guid: 6b2060cbf78cb0e4a997a80321e0f1db, type: 3}
+    volume: 0.511
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Placement
+    clip: {fileID: 8300000, guid: 7b361b93a96b3534a9f68cb5a2cbb32c, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: FalsePlacement
+    clip: {fileID: 8300000, guid: 7a845dbbb594f6b429045fe30840513c, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0

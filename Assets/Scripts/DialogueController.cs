@@ -28,7 +28,7 @@ public class DialogueController : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         dialogueBox.gameObject.SetActive(true);
-        dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString);
+        dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
 
     }
     private void OnDestroy()
@@ -43,7 +43,7 @@ public class DialogueController : MonoBehaviour
             dialogueBox.gameObject.SetActive(false);
             return;
         }
-        dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString);
+        dialogueBox.SetDialogue(CurrentDialogue.PersonSprite, CurrentDialogue.DialogueString,CurrentDialogue.MusicID);
     }
 
 }

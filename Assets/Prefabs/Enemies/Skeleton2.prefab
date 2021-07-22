@@ -119,6 +119,7 @@ MonoBehaviour:
   health: 0
   sprite: {fileID: 21300000, guid: d72b59d08f6ba2b439b5203d7b3c8a81, type: 3}
   count: 1
+  deathMusicID: Skeleton_Death
 --- !u!50 &-6471270774030457612
 Rigidbody2D:
   serializedVersion: 4
