@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: Back_Ground_Music
     clip: {fileID: 8300000, guid: 4e4b3bdd3d1a25d4f8a43e49f0f9ab47, type: 3}
-    volume: 0.511
+    volume: 0.45
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
@@ -118,6 +118,12 @@ MonoBehaviour:
     loop: 0
   - name: Key_Pickup
     clip: {fileID: 8300000, guid: 22d719ac97d3b784b96cb5bb3b772e4b, type: 3}
+    volume: 1
+    pitch: 1
+    audioSource: {fileID: 0}
+    loop: 0
+  - name: Potion_Drink
+    clip: {fileID: 8300000, guid: 1046c8850b5a72f49bafa46f37e9b17f, type: 3}
     volume: 1
     pitch: 1
     audioSource: {fileID: 0}

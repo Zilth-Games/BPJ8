@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Pathfinder))]
 public class Hero : Character
@@ -69,14 +70,21 @@ public class Hero : Character
             AudioManager.instance.Play("Knight_Death");
             Debug.Log("Dead");
             GameManager.Instance.isLevelFinished = true;
-            GameManager.Instance.RestartLevel();
+            GameManager.Instance.LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);
             Destroy(gameObject);
         }
     }
 
     public void IncreaseHealth()
     {
+        if (health < heartUIs.Count)
+        {
+            heartUIs[health ].HeartForeground.fillAmount = 1;
+        }
         health++;
+        AudioManager.instance.Play("Potion_Drink");
+        
+
         if (health > heartUIs.Count)
         {
             CreateHeartUI();
