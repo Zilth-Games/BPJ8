@@ -47,6 +47,7 @@ public class GameManager : Singleton<GameManager>
     public bool isLevelFinished;
 
     private bool isGameStarted;
+    private static bool mute;
 
     public BoundsInt Bounds { get; private set; }
     public Camera MainCamera { get; private set; }
@@ -79,6 +80,17 @@ public class GameManager : Singleton<GameManager>
         timer = stepInterval;
         hero = FindObjectOfType<Hero>();
 
+    }
+    private void Start()
+    {
+        if (mute)
+        {
+            soundButton.image.sprite = soundButtonSprite2;
+        }
+        else
+        {
+            soundButton.image.sprite = soundButtonSprite1;
+        }
     }
 
     private void Update()
@@ -183,6 +195,7 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.instance.Play("Button");
         AudioSource audioSource = AudioManager.instance.GetComponent<AudioSource>();
+        mute = !mute;
         if (audioSource.volume == 0.45f)
         {
             soundButton.image.sprite = soundButtonSprite2;
