@@ -220,4 +220,9 @@ public class GameManager : Singleton<GameManager>
             enemyUIButtons[i].Button.interactable = false;
         }
     }
+    public void QuitButton()
+    {
+        AudioManager.instance.Play("Button");
+        Application.Quit();
+    }
 }
