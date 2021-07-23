@@ -69,7 +69,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-
         CreateEnemyUIButtons();
         enemies = new List<Enemy>();
 
@@ -83,6 +82,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
+
         if (mute)
         {
             soundButton.image.sprite = soundButtonSprite2;
@@ -164,6 +164,7 @@ public class GameManager : Singleton<GameManager>
 
     public void CreateEnemyUIButtons()
     {
+        EnemyUIButton.totalEnemySourceCount = 0;
         for (int i = 0; i < enemyStages.Count; i++)
         {
             var enemyButton = Instantiate(enemyUIButtonPrefab, enemyUIButtonParent);
