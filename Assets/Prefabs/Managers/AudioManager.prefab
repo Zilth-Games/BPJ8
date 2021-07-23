@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: Back_Ground_Music
     clip: {fileID: 8300000, guid: 4e4b3bdd3d1a25d4f8a43e49f0f9ab47, type: 3}
-    volume: 0.511
+    volume: 0.45
     pitch: 1
     audioSource: {fileID: 0}
     loop: 1
