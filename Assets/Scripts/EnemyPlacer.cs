@@ -33,7 +33,7 @@ public class EnemyPlacer : MonoBehaviour
                     currentEnemyButton.enemySourceCount--;
                     currentEnemyButton.UpdateText();
                     placementTilemap.SetTile(cell, null);
-                    cursor.transform.position = new Vector3(10, 10, 0);
+                    cursor.transform.position = new Vector3(20, 20, 0);
                     EnemyUIButton.totalEnemySourceCount--;
                     if (EnemyUIButton.totalEnemySourceCount == 0)
                         GameManager.Instance.PlayButton.interactable = true;

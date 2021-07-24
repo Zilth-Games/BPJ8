@@ -21,7 +21,6 @@ public class EnemyUIButton : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = FindObjectOfType<AudioManager>();
         enemyPlacer = FindObjectOfType<EnemyPlacer>();
         button.onClick.AddListener(ChooseEnemy);
     }
@@ -41,7 +40,7 @@ public class EnemyUIButton : MonoBehaviour
 
     public void ChooseEnemy()
     {
-        audioManager.Play("Button");
+        AudioManager.instance.Play("Button");
         enemyPlacer.selectedEnemyPrefab = enemyPrefab;
         enemyPlacer.currentEnemyButton = this;
     }

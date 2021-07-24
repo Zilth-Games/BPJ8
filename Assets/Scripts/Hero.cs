@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [RequireComponent(typeof(Pathfinder))]
 public class Hero : Character
@@ -9,6 +10,8 @@ public class Hero : Character
     [SerializeField] private HeartUI heartPrefab;
     [SerializeField] private Transform healthBar;
     public ParticleSystem bloodParticle;
+
+    private Coroutine winCheckCoroutine;
 
 
     private List<HeartUI> heartUIs;
@@ -34,15 +37,23 @@ public class Hero : Character
         {
             return;
         }
-
         if (GameManager.Instance.heroTargetCell == currentCell)
         {
-            Debug.Log("Win");
-            GameManager.Instance.isLevelFinished = true;
-            GameManager.Instance.RestartLevel();
+            winCheckCoroutine = StartCoroutine(WinCheck());
         }
     }
 
+
+    private IEnumerator WinCheck()
+    {
+        if (winCheckCoroutine != null) StopCoroutine(winCheckCoroutine);
+        yield return new WaitForSeconds(.1f);
+
+        if (health == 0) yield break;
+        GameManager.Instance.isLevelFinished = true;
+        GameManager.Instance.RestartLevel();
+
+    }
     private void CreateHearts()
     {
         heartUIs = new List<HeartUI>(health);
@@ -79,11 +90,11 @@ public class Hero : Character
     {
         if (health < heartUIs.Count)
         {
-            heartUIs[health ].HeartForeground.fillAmount = 1;
+            heartUIs[health].HeartForeground.fillAmount = 1;
         }
         health++;
         AudioManager.instance.Play("Potion_Drink");
-        
+
 
         if (health > heartUIs.Count)
         {
